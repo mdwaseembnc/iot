@@ -11,3 +11,18 @@ void loop() {
   analogWrite(9, intensity);
   delay(1000);
 }
+//2nd code
+int ldrPin = A0;
+int intensity;
+
+void setup() {
+  pinMode(ldrPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  intensity = analogRead(ldrPin);
+  Serial.print("LDR Intensity: ");
+  Serial.println(intensity);
+  delay(500);
+}
