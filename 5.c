@@ -1,36 +1,22 @@
+int ledPin = 13;
+char receivedData;
+
 void setup() {
-
-pinMode (12, OUTPUT);
-
-digitalWrite(12, Low);
-
-Serial.begin (9600);
-
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
-
-if (Serial available() >0){
-
-char letter = Serial.read();
-
-if (letter == '1') {
-
-digitalWrite (12, HIGH);
-
-Serial.println("The LED ON");
-
-}
-}
-}
-else if (letter == '0') {
-
-digitalWrite (12, LOW);
-
-Serial.println("The LED of");
-
-else {
-  Serial.println("Invalid Input");
-}
-delay (200) 
+  if (Serial.available() > 0) {
+    receivedData = Serial.read();
+    if (receivedData == '1') {
+      digitalWrite(ledPin, HIGH);
+      Serial.println("LED ON");
+    } else if (receivedData == '0') {
+      digitalWrite(ledPin, LOW);
+      Serial.println("LED OFF");
+    } else {
+      Serial.println("Invalid Input");
+    }
+  }
 }
